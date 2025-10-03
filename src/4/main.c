@@ -8,15 +8,15 @@ int main(void)
     char ch;
     DynamicArray array;
 
-    dArrayInit(&array, 10);
+    dArrayInit(&array, 10);//создаем массив
 
-    while (scanf("%d", &value)) {
+    while (scanf("%d", &value)) { //читаем до \n
         dArrayAppend(&array, value);
         do {
-            ch = getchar();
+            ch = getchar(); //смотрим поток до числа или \n
         } while (ch == ' ' || ch == '\t' || ch == '\r');
 
-        if (ch == '\n')
+        if (ch == '\n') //отлавливаем \n
             break;
 
         ungetc(ch, stdin);

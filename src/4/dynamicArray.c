@@ -7,19 +7,19 @@ void dArrayInit(DynamicArray* arr, unsigned int initial_capacity)
 {
     arr->size = 0;
     arr->capacity = initial_capacity;
-    arr->data = malloc(initial_capacity * sizeof(int));
+    arr->data = malloc(initial_capacity * sizeof(int));//динамическое выделение памяти
 }
 
 void dArrayReserve(DynamicArray* arr, unsigned int new_capacity)
 {
-    int* tmp = realloc(arr->data, new_capacity * sizeof(int));
+    int* tmp = realloc(arr->data, new_capacity * sizeof(int));//увеличение памяти под массив
     arr->data = tmp;
     arr->capacity = new_capacity;
 }
 
 void dArrayAppend(DynamicArray* arr, int value)
 {
-    if (arr->size == arr->capacity) {
+    if (arr->size == arr->capacity) { //при недостатке места выделится еще 25*int байт
         unsigned int new_capacity = arr->capacity + 25 * sizeof(int);
         dArrayReserve(arr, new_capacity);
     }
@@ -37,7 +37,7 @@ void dArrayPrint(DynamicArray* arr)
 
 void dArraySort(DynamicArray* arr)
 {
-    quickSort(arr, 0, arr->size - 1);
+    quickSort(arr, 0, arr->size - 1);//отправляем на сортировку отдельно реализованной функции 
 }
 
 void dArrayDelete(DynamicArray* arr)
